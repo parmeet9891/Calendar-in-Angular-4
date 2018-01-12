@@ -1,0 +1,149 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 text-center">
+      <div class="col-md-3">
+      </div>
+      <div class="calender1 col-md-6 text-center">
+          <span class="pull-left glyphicon glyphicon-chevron-left colorWhite" (click)="previousMonth()"></span>
+          <span class="pull-right glyphicon glyphicon-chevron-right colorWhite" (click)="nextMonth()"></span>
+          <h4 class="colorWhite text-center">{{date.format('MMMM')}} {{date.format('YYYY')}}</h4>
+      </div>
+
+      <div class="col-md-3"></div>
+    </div>
+
+    <div class="col-md-12 col-sm-12 text-center">
+      <div class="col-md-3"></div>
+      <div class="calender2 col-md-6">
+          <div class="calendar-days" *ngFor="let days of daysOfWeek">
+            <p>{{days}}</p>
+          </div> <br>
+          <div id="calendar-container">
+          <div [ngClass]="{'inactive ': !day, 'today': todayCheck(day), 'selected': isSelected(day)}" (click) = "selectedDate(day)" class="all-calendar-days" *ngFor = "let day of daysArray; let idx=index">
+            <div><p style="color: white">{{day?.date()}}</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3"></div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="panel-group">
+              <div class="events panel panel-primary">
+                <div class="panel-heading">New Events</div>
+                <div class="panel-body">
+                  <form class="form-horizontal" [formGroup]='dateForm'>
+
+                    <div class="form-group">
+                      <label class="control-label col-sm-4" for="email">Start Date: </label>
+                        <div class="col-sm-8">
+                          <input #fromDate id="fromDate" type="date" class="form-control" formControlName="dateFrom" name="dateFrom" [(ngModel)]="DF">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-sm-4" for="email">End Date: </label>
+                        <div class="col-sm-8">
+                          <input #toDate id="toDate" type="date" class="form-control" formControlName="dateTo" name="dateTo" [(ngModel)]="DT">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-sm-4" for="title">Title </label>
+                        <div class="col-sm-8">
+                          <input #title id="title" type="text" class="form-control" name="title" placeholder="Enter Title">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-4 col-sm-3">
+                          <input type="button" class="form-control btn btn-primary" (click) = "addValue(fromDate.value, toDate.value, title.value)" id="btn" name="Submit" value="Submit">
+                        </div>
+                        <div class="col-sm-3">
+                          <input type="reset" class="form-control btn btn-success" id="btn" name="Reset" value="Reset">
+                        </div>
+                    </div>
+
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="col-md-6">
+            <button class='events btn btn-primary' (click)='reserve()'>Reserve</button>
+            <div *ngIf='isReserved' class='reserved'>
+                {{isReserved}}
+            </div>
+          </div> -->
+
+
+          <div class="col-md-6">
+            <div class=" events panel panel-default" [hidden]="!store.length">
+              <div class="panel-heading">Events</div>
+                <table class="table table-responsive table-bordered">
+                  <thead>
+                    <tr>
+                      <th>From</th>
+                      <th>To</th>
+                      <th>Title</th>
+                      <th>Edit/Delete</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of store">
+                      <td>{{item.From}}</td>
+                      <td>{{item.To}}</td>
+                      <td>{{item.Title}}</td>
+                      <td>
+                        <button class="btn btn-success" (click)="edit(item.From, item.To, item.Title)">Edit</button>
+                        <button class="btn btn-danger" (click)="delete(store,item)">Delete</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="col-md-2">
+              <select class="form-control" [(ngModel)]="selectedVal">
+                <option *ngFor="let day of daysOfWeek" [ngValue]="day">
+                  {{day}}
+                </option>
+              </select>
+              <div>{{selectedVal}}</div>
+            </div>
+
+        </div>
+      </div>
+
+   </div>
+</div>
+
+
+<!--
+  (click)="createEvent(day?.date())
+  <div class='container'>
+    <div id='calendar-container' class='container'>
+
+      <div class='container'>
+                <div class='calendar-days container text-center'>S</div>
+                <div class='calendar-days container text-center'>M</div>
+                <div class='calendar-days container text-center'>T</div>
+                <div class='calendar-days container text-center'>W</div>
+                <div class='calendar-days container text-center'>T</div>
+                <div class='calendar-days container text-center'>F</div>
+                <div class='calendar-days container text-center'>S</div>
+            </div>
+            <div class='container'>
+                <div class='allDays' *ngFor="let day of daysArray">
+                    <div class='calendar-day'>{{day}}</div>
+                </div>
+            </div>
+
+</div>
+</div> -->

@@ -1,0 +1,93 @@
+
+.container {
+  margin-top: 20px;
+}
+
+.days {
+  display: inline-block;
+}
+
+.calender1 {
+  border-width: 1px;
+  border-style: solid;
+  background-color: #16363E;
+  border-radius: 5px;
+}
+
+.calender2 {
+  border-width: 1px;
+  border-style: solid;
+  background-color: white;
+  border-radius: 5px;
+}
+
+
+.calender3 {
+  border-width: 1px;
+  border-style: solid;
+  background-color: #F9DAB9;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.colorWhite {
+  color: white;
+}
+
+.glyphicon-chevron-left, .glyphicon-chevron-right {
+  font-size: 15px;
+  padding: 10px;
+}
+
+.weeks {
+  display: inline-block;
+  list-style-type: none;
+}
+
+.calendar-days {
+  display: inline-block;
+  width: 70px;
+  height: 50px;
+  background: #FF5D46;
+  border: 3px solid #c2c2c2;
+}
+
+.all-calendar-days {
+  display: inline-block;
+  width: 70px;
+  height: 50px;
+  background: #004C78;
+  border: 3px solid #c2c2c2;
+}
+
+.allDays {
+  display: inline-block;
+}
+
+#calendar-container {
+  width: 559px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left:22px;
+}
+
+.inactive {
+  opacity: 0.5;
+}
+
+.today {
+  background-color: #0084D3;
+}
+
+.changeColor {
+  background-color: black;
+}
+
+.events {
+  margin-top: 20px;
+}
+
+.selected {
+  background: peru;
+  opacity: 0.6;
+}
